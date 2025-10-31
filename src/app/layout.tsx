@@ -30,6 +30,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: 'graykim | That Bar',
   description: 'Thirsty sinners are welcomed.',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    viewportFit: 'cover',
+  },
 };
 
 export default function RootLayout({
