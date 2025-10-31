@@ -141,7 +141,7 @@ export default function Home() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-center mb-8"
             >
-              <p className="font-header text-[10px] tracking-[0.5em] uppercase text-white/40 mb-6">Est. 2016</p>
+              <p className="font-header text-[10px] tracking-[0.5em] uppercase text-white/40 mb-6">Est. 2022</p>
               <h1 className="font-signature neon-text neon-flicker text-6xl sm:text-7xl md:text-8xl text-white mb-6 leading-none">
                 That Bar
               </h1>
