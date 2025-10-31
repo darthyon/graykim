@@ -191,20 +191,6 @@ export default function Home() {
 
   return (
     <div className="film-grain h-screen bg-black overflow-hidden flex flex-col">
-      {/* Escape Button - Top Right */}
-      <motion.button
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.3 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setShowMain(false)}
-        className="fixed top-8 right-8 z-[100] px-6 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
-      >
-        <span className="text-white/60 group-hover:text-white font-header text-[10px] tracking-[0.3em] uppercase transition-colors">
-          Esc
-        </span>
-      </motion.button>
 
 
       {/* Content Area with Container */}
@@ -256,18 +242,30 @@ export default function Home() {
                 </nav>
               </motion.div>
               
-              {/* Mobile Navigation - Bottom Fixed */}
+              {/* Mobile Navigation - Top Fixed with Back Button */}
               <motion.div
-                initial={{ y: 100, opacity: 0 }}
+                initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="lg:hidden fixed left-1/2 -translate-x-1/2 z-50"
-                style={{ 
-                  bottom: 'max(5rem, calc(3rem + env(safe-area-inset-bottom, 0px)))'
-                }}
+                className="lg:hidden flex items-center gap-3 pt-8 pb-4 px-4 relative z-50"
               >
-                <nav className="px-8 py-4 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
-                  <div className="flex items-center gap-8">
+                {/* Back Button */}
+                <motion.button
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowMain(false)}
+                  className="px-4 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group flex-shrink-0"
+                >
+                  <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                  </svg>
+                </motion.button>
+                
+                {/* Navigation */}
+                <nav className="flex-1 px-6 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
+                  <div className="flex items-center justify-around">
                     {pages.map((page) => (
                       <motion.button
                         key={page.id}
@@ -310,15 +308,18 @@ export default function Home() {
               {activeTab === 'gray-kim' && (
                 <div className="flex-1 overflow-y-auto p-6 pb-32 relative">
                   
-                  {/* Scroll indicator - Fixed to viewport */}
+                  {/* Fade gradient at bottom */}
+                  <div className="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-30 lg:hidden" />
+                  
+                  {/* Scroll indicator text */}
                   <motion.div
-                    className="fixed right-8 z-40 lg:hidden"
-                    style={{ bottom: 'calc(max(7rem, calc(5rem + env(safe-area-inset-bottom, 0px))))' }}
+                    className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 lg:hidden flex flex-col items-center gap-2"
                     animate={{ y: [0, 8, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   >
-                    <svg className="w-8 h-8 text-white/60 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                    <span className="text-white/60 font-header text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+                    <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </motion.div>
                   
@@ -467,15 +468,18 @@ export default function Home() {
               {activeTab === 'backstory' && (
                 <div className="flex-1 overflow-y-auto p-6 sm:p-8 lg:p-12 pb-20 lg:pb-12 relative">
               
-              {/* Scroll indicator - Fixed to viewport */}
+              {/* Fade gradient at bottom */}
+              <div className="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-30 lg:hidden" />
+              
+              {/* Scroll indicator text */}
               <motion.div
-                className="fixed right-8 z-40 lg:hidden"
-                style={{ bottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))' }}
+                className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 lg:hidden flex flex-col items-center gap-2"
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
-                <svg className="w-8 h-8 text-white/60 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                <span className="text-white/60 font-header text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </motion.div>
               
@@ -532,15 +536,18 @@ export default function Home() {
               {activeTab === 'that-bar' && (
                 <div className="flex-1 overflow-y-auto p-6 sm:p-8 lg:p-12 pb-20 lg:pb-12 relative">
               
-              {/* Scroll indicator - Fixed to viewport */}
+              {/* Fade gradient at bottom */}
+              <div className="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-30 lg:hidden" />
+              
+              {/* Scroll indicator text */}
               <motion.div
-                className="fixed right-8 z-40 lg:hidden"
-                style={{ bottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))' }}
+                className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 lg:hidden flex flex-col items-center gap-2"
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
-                <svg className="w-8 h-8 text-white/60 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                <span className="text-white/60 font-header text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </motion.div>
               
@@ -631,15 +638,18 @@ export default function Home() {
               {activeTab === 'plots' && (
                 <div className="flex-1 overflow-y-auto p-6 sm:p-8 lg:p-12 pb-20 lg:pb-12 relative">
               
-              {/* Scroll indicator - Fixed to viewport */}
+              {/* Fade gradient at bottom */}
+              <div className="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-30 lg:hidden" />
+              
+              {/* Scroll indicator text */}
               <motion.div
-                className="fixed right-8 z-40 lg:hidden"
-                style={{ bottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))' }}
+                className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 lg:hidden flex flex-col items-center gap-2"
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
-                <svg className="w-8 h-8 text-white/60 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                <span className="text-white/60 font-header text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </motion.div>
               
@@ -718,13 +728,29 @@ export default function Home() {
               {/* Single Menu Page - Desktop */}
               <div className="relative bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5">
                 
-                {/* Desktop Navigation - Inside Menu */}
+                {/* Desktop Navigation with Back Button - Inside Menu */}
                 <motion.div 
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="flex justify-center pt-8 relative z-50"
+                  className="flex items-center justify-center pt-8 px-12 relative z-50"
                 >
+                  {/* Back Button */}
+                  <motion.button
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setShowMain(false)}
+                    className="absolute left-12 px-4 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+                  >
+                    <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                  </motion.button>
+                  
+                  {/* Navigation - Centered */}
                   <nav className="group relative px-6 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <div className="flex items-center gap-8">
                       {pages.map((page) => (
@@ -756,14 +782,18 @@ export default function Home() {
                   </nav>
                 </motion.div>
                 
-                {/* Scroll indicator - Desktop */}
+                {/* Fade gradient at bottom - Desktop */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/80 to-transparent pointer-events-none z-30" />
+                
+                {/* Scroll indicator text - Desktop */}
                 <motion.div
-                  className="fixed bottom-12 right-12 z-50 hidden lg:block"
+                  className="absolute bottom-12 left-1/2 -translate-x-1/2 z-40 hidden lg:flex flex-col items-center gap-2"
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <svg className="w-8 h-8 text-white/60 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                  <span className="text-white/60 font-header text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+                  <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </motion.div>
                 
