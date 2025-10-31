@@ -216,7 +216,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/60 blur-3xl scale-95" />
             
             {/* Single Menu Page - Mobile */}
-            <div className="relative bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5 h-full flex flex-col overflow-hidden">
+            <div className="relative bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5 h-full flex flex-col">
             
             {/* Desktop Navigation - Inside Menu */}
               <motion.div 
@@ -305,19 +305,15 @@ export default function Home() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="flex-1 overflow-hidden"
+                  className="flex-1 flex flex-col overflow-hidden"
                 >
               {activeTab === 'gray-kim' && (
                 <div className="flex-1 overflow-y-auto p-6 pb-32 relative">
-                  {/* Decorative Corner Elements */}
-                  <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/10" />
-                  <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/10" />
-                  <div className="absolute bottom-8 left-8 w-12 h-12 border-b-2 border-l-2 border-white/10" />
-                  <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-white/10" />
                   
                   {/* Scroll indicator - Fixed to viewport */}
                   <motion.div
-                    className="fixed bottom-28 right-8 z-50 lg:hidden"
+                    className="fixed right-8 z-40 lg:hidden"
+                    style={{ bottom: 'calc(max(7rem, calc(5rem + env(safe-area-inset-bottom, 0px))))' }}
                     animate={{ y: [0, 8, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   >
@@ -470,15 +466,11 @@ export default function Home() {
 
               {activeTab === 'backstory' && (
                 <div className="flex-1 overflow-y-auto p-6 sm:p-8 lg:p-12 pb-20 lg:pb-12 relative">
-              {/* Decorative Corner Elements */}
-              <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/10" />
-              <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/10" />
-              <div className="absolute bottom-8 left-8 w-12 h-12 border-b-2 border-l-2 border-white/10" />
-              <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-white/10" />
               
               {/* Scroll indicator - Fixed to viewport */}
               <motion.div
-                className="fixed bottom-28 right-8 z-50 lg:hidden"
+                className="fixed right-8 z-40 lg:hidden"
+                style={{ bottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))' }}
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
@@ -539,15 +531,11 @@ export default function Home() {
 
               {activeTab === 'that-bar' && (
                 <div className="flex-1 overflow-y-auto p-6 sm:p-8 lg:p-12 pb-20 lg:pb-12 relative">
-              {/* Decorative Corner Elements */}
-              <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/10" />
-              <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/10" />
-              <div className="absolute bottom-8 left-8 w-12 h-12 border-b-2 border-l-2 border-white/10" />
-              <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-white/10" />
               
               {/* Scroll indicator - Fixed to viewport */}
               <motion.div
-                className="fixed bottom-28 right-8 z-50 lg:hidden"
+                className="fixed right-8 z-40 lg:hidden"
+                style={{ bottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))' }}
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
@@ -642,15 +630,11 @@ export default function Home() {
 
               {activeTab === 'plots' && (
                 <div className="flex-1 overflow-y-auto p-6 sm:p-8 lg:p-12 pb-20 lg:pb-12 relative">
-              {/* Decorative Corner Elements */}
-              <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/10" />
-              <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/10" />
-              <div className="absolute bottom-8 left-8 w-12 h-12 border-b-2 border-l-2 border-white/10" />
-              <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-white/10" />
               
               {/* Scroll indicator - Fixed to viewport */}
               <motion.div
-                className="fixed bottom-28 right-8 z-50 lg:hidden"
+                className="fixed right-8 z-40 lg:hidden"
+                style={{ bottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))' }}
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
@@ -794,11 +778,6 @@ export default function Home() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
                   <div className="overflow-y-auto max-h-[85vh] p-12 relative">
-                    {/* Decorative Corner Elements */}
-                    <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/10 pointer-events-none" />
-                    <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/10 pointer-events-none" />
-                    <div className="absolute bottom-8 left-8 w-12 h-12 border-b-2 border-l-2 border-white/10 pointer-events-none" />
-                    <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-white/10 pointer-events-none" />
                     
                   {activeTab === 'gray-kim' && (
                     <div>
