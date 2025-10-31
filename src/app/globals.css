@@ -16,6 +16,8 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
   background-color: var(--dark-bg);
   color: #e5e5e5;
+  /* Support for iOS safe areas */
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* Custom Fonts */

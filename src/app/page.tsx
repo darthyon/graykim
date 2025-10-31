@@ -287,10 +287,12 @@ export default function Home() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
                 className="lg:hidden fixed left-1/2 -translate-x-1/2 z-50"
-                style={{ bottom: 'max(3rem, env(safe-area-inset-bottom, 1rem) + 2rem)' }}
+                style={{ 
+                  bottom: 'max(5rem, calc(3rem + env(safe-area-inset-bottom, 0px)))'
+                }}
               >
-                <nav className="px-6 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
-                  <div className="flex items-center gap-6">
+                <nav className="px-8 py-4 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
+                  <div className="flex items-center gap-8">
                     {pages.map((page) => (
                       <motion.button
                         key={page.id}
