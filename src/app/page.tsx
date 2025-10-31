@@ -208,42 +208,17 @@ export default function Home() {
 
 
       {/* Content Area with Container */}
-      <AnimatePresence mode="wait" custom={direction}>
-        <motion.div 
-          key={activeTab}
-          custom={direction}
-          initial={{ 
-            opacity: 0,
-            rotateY: direction > 0 ? 15 : -15,
-            scale: 0.95
-          }}
-          animate={{ 
-            opacity: 1,
-            rotateY: 0,
-            scale: 1
-          }}
-          exit={{ 
-            opacity: 0,
-            rotateY: direction > 0 ? -15 : 15,
-            scale: 0.95
-          }}
-          transition={{ 
-            duration: 0.5,
-            ease: [0.4, 0, 0.2, 1]
-          }}
-          style={{ perspective: 1200 }}
-          className="flex-1 relative overflow-hidden"
-        >
-          {/* Mobile Layout */}
-          <div className="lg:hidden h-full py-4 px-4 flex flex-col">
-            <div className="max-w-4xl mx-auto relative w-full h-full flex flex-col">
-              {/* Page Shadow */}
-              <div className="absolute inset-0 bg-black/60 blur-3xl scale-95" />
-              
-              {/* Single Menu Page - Mobile */}
-              <div className="relative bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5 h-full flex flex-col overflow-hidden">
-              
-              {/* Desktop Navigation - Inside Menu */}
+      <div className="flex-1 relative overflow-hidden" style={{ perspective: 1200 }}>
+        {/* Mobile Layout */}
+        <div className="lg:hidden h-full py-4 px-4 flex flex-col">
+          <div className="max-w-4xl mx-auto relative w-full h-full flex flex-col">
+            {/* Page Shadow */}
+            <div className="absolute inset-0 bg-black/60 blur-3xl scale-95" />
+            
+            {/* Single Menu Page - Mobile */}
+            <div className="relative bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5 h-full flex flex-col overflow-hidden">
+            
+            {/* Desktop Navigation - Inside Menu */}
               <motion.div 
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -320,6 +295,18 @@ export default function Home() {
                   </div>
                 </nav>
               </motion.div>
+              
+              {/* Content Area with AnimatePresence */}
+              <AnimatePresence mode="wait" custom={direction}>
+                <motion.div
+                  key={activeTab}
+                  custom={direction}
+                  initial={{ opacity: 0, x: direction > 0 ? 50 : -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="flex-1 overflow-hidden"
+                >
               {activeTab === 'gray-kim' && (
                 <div className="flex-1 overflow-y-auto p-6 pb-32 relative">
                   {/* Decorative Corner Elements */}
@@ -732,6 +719,8 @@ export default function Home() {
               </div>
                 </div>
               )}
+                </motion.div>
+              </AnimatePresence>
               </div>
             </div>
           </div>
@@ -783,25 +772,34 @@ export default function Home() {
                   </nav>
                 </motion.div>
                 
+                {/* Scroll indicator - Desktop */}
+                <motion.div
+                  className="fixed bottom-12 right-12 z-50 hidden lg:block"
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <svg className="w-8 h-8 text-white/60 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </motion.div>
+                
                 {/* Desktop Content - All Pages */}
-                <div className="overflow-y-auto max-h-[85vh] p-12 relative">
-                  {/* Decorative Corner Elements - Desktop */}
-                  <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/10 pointer-events-none" />
-                  <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/10 pointer-events-none" />
-                  <div className="absolute bottom-8 left-8 w-12 h-12 border-b-2 border-l-2 border-white/10 pointer-events-none" />
-                  <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-white/10 pointer-events-none" />
-                  
-                  {/* Scroll indicator - Desktop */}
+                <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
-                    className="fixed bottom-12 right-12 z-50 hidden lg:block"
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                    key={activeTab}
+                    custom={direction}
+                    initial={{ opacity: 0, x: direction > 0 ? 50 : -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <svg className="w-8 h-8 text-white/60 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </motion.div>
-                  
+                  <div className="overflow-y-auto max-h-[85vh] p-12 relative">
+                    {/* Decorative Corner Elements */}
+                    <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/10 pointer-events-none" />
+                    <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/10 pointer-events-none" />
+                    <div className="absolute bottom-8 left-8 w-12 h-12 border-b-2 border-l-2 border-white/10 pointer-events-none" />
+                    <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-white/10 pointer-events-none" />
+                    
                   {activeTab === 'gray-kim' && (
                     <div>
                       
@@ -1142,12 +1140,13 @@ export default function Home() {
                       </div>
                     </div>
                   )}
-                </div>
+                  </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </div>
-        </motion.div>
-      </AnimatePresence>
+      </div>
     </div>
   );
 }
