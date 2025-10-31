@@ -406,17 +406,17 @@ export default function Home() {
                         </motion.div>
                       )}
                       
-                      {/* Who is Gray */}
-                      {bioContent['Who is Gray?'] && (
+                      {/* Who */}
+                      {bioContent['Who?'] && (
                         <motion.div
                           className="mb-12"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.5, duration: 0.8 }}
                         >
-                          <h3 className="font-signature text-3xl text-white mb-4">Who is Gray?</h3>
+                          <h3 className="font-signature text-3xl text-white mb-4">Who?</h3>
                           <div className="text-gray-400 text-sm leading-relaxed space-y-4">
-                            {bioContent['Who is Gray?'].split('\n\n').filter((p: string) => p.trim()).map((para: string, i: number) => (
+                            {bioContent['Who?'].split('\n\n').filter((p: string) => p.trim()).map((para: string, i: number) => (
                               <p key={i} dangerouslySetInnerHTML={{ __html: para.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }} />
                             ))}
                           </div>
@@ -682,6 +682,13 @@ export default function Home() {
                 </h2>
                 <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#8b0000] to-transparent mx-auto mb-6" />
                 <p className="font-signature text-xl text-white/60 italic">Choose your adventure</p>
+                
+                {/* Intensity Legend */}
+                <div className="mt-8 text-xs text-gray-500" style={{ fontFamily: 'var(--font-manrope)' }}>
+                  <p className="mb-1">⚡ = Low (chill, quiet) | ⚡⚡ = Medium (tension, drama) | ⚡⚡⚡ = High (chaos, unhinged)</p>
+                  <p className="mb-3"></p>
+                  <p className="leading-relaxed max-w-md mx-auto">These are conversation starters—something to kick things off. They might change completely once we start plotting, and I'm very much open to that. Got your own ideas? Even better. Let's talk.</p>
+                </div>
               </motion.div>
               
               {/* Content */}
@@ -868,17 +875,17 @@ export default function Home() {
                                 </motion.div>
                               )}
                               
-                              {/* Who is Gray */}
-                              {bioContent['Who is Gray?'] && (
+                              {/* Who */}
+                              {bioContent['Who?'] && (
                                 <motion.div
                                   className="mb-12"
                                   initial={{ opacity: 0 }}
                                   animate={{ opacity: 1 }}
                                   transition={{ delay: 0.5, duration: 0.8 }}
                                 >
-                                  <h3 className="font-signature text-3xl text-white mb-4">Who is Gray?</h3>
+                                  <h3 className="font-signature text-3xl text-white mb-4">Who?</h3>
                                   <div className="text-gray-400 text-sm leading-relaxed space-y-4">
-                                    {bioContent['Who is Gray?'].split('\n\n').filter((p: string) => p.trim()).map((para: string, i: number) => (
+                                    {bioContent['Who?'].split('\n\n').filter((p: string) => p.trim()).map((para: string, i: number) => (
                                       <p key={i} dangerouslySetInnerHTML={{ __html: para.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }} />
                                     ))}
                                   </div>
@@ -1088,6 +1095,13 @@ export default function Home() {
                         </h2>
                         <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#8b0000] to-transparent mx-auto mb-6" />
                         <p className="font-signature text-xl text-white/60 italic">Choose your adventure</p>
+                        
+                        {/* Intensity Legend */}
+                        <div className="mt-8 text-xs text-gray-500" style={{ fontFamily: 'var(--font-manrope)' }}>
+                          <p className="mb-1">⚡ = Low (chill, quiet) | ⚡⚡ = Medium (tension, drama) | ⚡⚡⚡ = High (chaos, unhinged)</p>
+                          <p className="mb-3"></p>
+                          <p className="leading-relaxed max-w-md mx-auto">These are conversation starters—something to kick things off. They might change completely once we start plotting, and I'm very much open to that. Got your own ideas? Even better. Let's talk.</p>
+                        </div>
                       </motion.div>
                       
                       {/* Content */}

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Cinzel, Playfair_Display } from 'next/font/google';
+import { Inter, Cinzel, Playfair_Display, Manrope } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({ 
@@ -21,6 +21,12 @@ const playfair = Playfair_Display({
   style: ['normal', 'italic']
 });
 
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  weight: ['300', '400', '500', '600']
+});
+
 export const metadata: Metadata = {
   title: 'graykim | That Bar',
   description: 'Thirsty sinners are welcomed.',
@@ -33,7 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${cinzel.variable} ${playfair.variable} font-body`}>
+      <body className={`${inter.variable} ${cinzel.variable} ${playfair.variable} ${manrope.variable} font-body`}>
         {children}
       </body>
     </html>

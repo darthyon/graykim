@@ -7,28 +7,34 @@
 
 **Grayson answers to Gray. Only Gray.**
 
-Gray taught himself to code at 14. No computer science degree, no formal training. Just him, figuring it out on his own. By 19, he was selling code to startups. Full-stack work: backend, frontend, infrastructure, whatever they needed. He'd take equity instead of salary, consult for a few months, then disappear before it felt like a real job.
+Gray learned to code at 14. No degree, no classes, nobody teaching him. Just him and a laptop and too much free time. By 19, he was building systems for startups who didn't know what they were doing. Backend, frontend, whatever they needed. They'd pay him in equity because they couldn't afford real salaries. He'd stick around a few months, then leave before anyone expected him to stay.
 
-Cashed out at 27. Bought a basement with questionable plumbing and a neon sign that barely worked. Fixed what he could. Opened it anyway. Three years later, That Bar exists. The margins are tight. The equipment's aging. But the drinks are right, the vibe works, and the people who need to find it always do.
+Cashed out at 27. Bought a basement with bad plumbing and a neon sign that worked maybe half the time. Fixed what he could. Opened it anyway.
 
----
+Three years later, That Bar is still here. Money's tight. Equipment's falling apart. But the drinks are good, the vibe's right, and people keep showing up.
 
 ## Daylight
 
-Surfs at dawn when the ocean's the only thing that doesn't ask follow-up questions. Waters the mint on his rooftop—the one routine he allows himself. Sleeps four hours. Pretends it's fine.
+He surfs at dawn. The ocean doesn't talk, doesn't ask questions, doesn't expect anything back. That's the appeal.
 
-Keeps tab on his expenditures close enough to stay afloat but buys art when the story's worth it. Collects cigarette packs from 47 countries, displays them on the shelves of his loft. Single-edition pieces only—paintings, toys, sculptures. No duplicates. Each one has a story.
+Waters the mint on his rooftop every morning. It's the one routine he lets himself have. Sleeps four hours a night. Tells himself it's fine.
 
-Crazy about spreadsheets. Numbers always open on at least one screen.
+Watches his money close enough to not go under. Still buys art when it matters. Collects cigarette packs from 47 countries, keeps them on shelves in his loft like they mean something. Sculptures, paintings, weird little toys. Nothing mass-produced. Every piece has a story, and he'll tell you if you ask at the right time.
+
+Spreadsheets are always open. He likes knowing where things stand.
 
 ## 0:00AM
 
-Flirts without keeping score. Drinks heavy without getting sloppy.
+Flirts with everyone. Doesn't keep track. Doesn't mean anything by it.
 
-Writes lines on bar receipts—quotes, provocations, half-thoughts—and leaves them for strangers to interpret. Some people collect them. He doesn't ask why.
+Drinks more than most people, handles it better than he should.
 
-The bar's his kingdom. He doesn't pour drinks—hires artists for that. He watches. Listens. Remembers (..or more like, secret recordings).
+Writes things on bar receipts. Random lines, half thoughts, things that sound profound at 2AM. Leaves them on the counter for whoever finds them. Some people save them. He doesn't ask why.
+
+He doesn't pour drinks. He hires people who know what they're doing. But he's always watching. Always listening. Remembers everything even when he pretends he doesn't.
 
 ## Gray's Rule
 
-The kind of guy who forgets your secrets on purpose. Selective memory. Zipped lips. The bar's confessional is one-way, and he's not keeping transcripts.
+He forgets your secrets on purpose. You tell him something at 3AM, and by morning it's gone. Or at least that's what he'll say.
+
+The bar's a confessional. You talk, he listens. Nothing leaves the building. No receipts for that kind of thing.

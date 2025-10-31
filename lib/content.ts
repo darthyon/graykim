@@ -121,7 +121,10 @@ function parseThatBarContent(content: string): any {
 
 function parsePlotsContent(content: string): Plot[] {
   const plots: Plot[] = [];
-  const sections = content.split('## ').filter(s => s.trim() && !s.startsWith('Plot Hooks'));
+  const sections = content.split('## ').filter(s => {
+    const trimmed = s.trim();
+    return trimmed && !trimmed.startsWith('Plot Guidelines') && !trimmed.startsWith('Plot Hooks');
+  });
   
   sections.forEach(section => {
     const lines = section.trim().split('\n').filter(l => l.trim());
@@ -130,14 +133,20 @@ function parsePlotsContent(content: string): Plot[] {
     let tag = '';
     let description = '';
     
-    lines.forEach(line => {
-      if (line.startsWith('**') && line.includes('|')) {
-        // Extract tag (e.g., "**EDGE THREAD**")
-        tag = line.split('**')[1].trim();
-        // Extract description after the pipe
-        description = line.split('|')[1].trim();
-      }
-    });
+    // Check if second line is the intensity level (emojis)
+    if (lines.length > 1 && (lines[1].includes('🌶️') || lines[1].includes('⚡'))) {
+      tag = lines[1].trim();
+      // Description is everything after the tag
+      description = lines.slice(2).join('\n').trim();
+    } else {
+      // Fallback: look for old format with ** and |
+      lines.forEach(line => {
+        if (line.startsWith('**') && line.includes('|')) {
+          tag = line.split('**')[1].trim();
+          description = line.split('|')[1].trim();
+        }
+      });
+    }
     
     plots.push({
       title,
