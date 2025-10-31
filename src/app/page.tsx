@@ -14,9 +14,9 @@ interface Plot {
 
 const pages: { id: Tab; label: string }[] = [
   { id: 'gray-kim', label: 'Bio' },
-  { id: 'backstory', label: 'Timeline' },
+  { id: 'backstory', label: 'Story' },
   { id: 'that-bar', label: 'That Bar' },
-  { id: 'plots', label: 'Plot List' },
+  { id: 'plots', label: 'Plot' },
 ];
 
 export default function Home() {
@@ -115,19 +115,19 @@ export default function Home() {
 
   if (!showMain) {
     return (
-      <div className="film-grain h-screen relative overflow-hidden bg-black flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8 lg:py-16">
+      <div className="film-grain h-screen relative overflow-hidden bg-black flex items-center justify-center py-4 px-4 sm:px-6 lg:py-0 lg:px-8">
         {/* Menu Cover Book */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9, rotateY: -15 }}
           animate={{ opacity: 1, scale: 1, rotateY: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="relative max-w-2xl w-full h-full lg:h-auto lg:aspect-[3/4] perspective-1000"
+          className="relative w-full h-[calc(100vh-2rem)] lg:w-auto lg:h-screen lg:aspect-[4/5] lg:max-w-[90vw] perspective-1000"
         >
           {/* Book Shadow */}
           <div className="absolute inset-0 bg-black/80 blur-3xl scale-95" />
           
           {/* Menu Cover */}
-          <div className="relative h-full bg-gradient-to-br from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border-2 border-white/5 flex flex-col items-center justify-center p-12">
+          <div className="relative h-full bg-gradient-to-br from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border-2 border-white/5 flex flex-col items-center justify-center p-8 lg:p-16">
             {/* Decorative Corner Elements */}
             <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/10" />
             <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/10" />
@@ -179,9 +179,9 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="absolute bottom-12 font-header text-[10px] tracking-[0.3em] uppercase text-white/20"
+              className="absolute bottom-8 font-header text-[10px] tracking-[0.5em] uppercase text-white/20"
             >
-              Underground District
+              Late Night Loop
             </motion.p>
           </div>
         </motion.div>
@@ -279,7 +279,7 @@ export default function Home() {
                         <span className={`font-header text-[10px] tracking-[0.3em] uppercase transition-colors duration-300 ${
                           activeTab === page.id ? 'text-white' : 'text-white/60 hover:text-white'
                         }`}>
-                          {page.label === 'Timeline' ? 'Story' : page.label === 'Plot List' ? 'Plots' : page.label === 'That Bar' ? 'Bar' : page.label}
+                          {page.label}
                         </span>
                         {activeTab === page.id && (
                           <motion.div
@@ -492,7 +492,7 @@ export default function Home() {
               >
                 <p className="font-header text-[10px] tracking-[0.5em] uppercase text-white/40 mb-6">The Journey</p>
                 <h2 className="font-signature text-6xl sm:text-7xl md:text-8xl text-white mb-6 leading-none">
-                  Timeline
+                  Story
                 </h2>
                 <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#8b0000] to-transparent mx-auto mb-6" />
                 <p className="font-header text-xs tracking-[0.3em] uppercase text-white/30">1994 — Present</p>
@@ -662,7 +662,7 @@ export default function Home() {
               >
                 <p className="font-header text-[10px] tracking-[0.5em] uppercase text-white/40 mb-6">Place Your Order</p>
                 <h2 className="font-signature text-6xl sm:text-7xl md:text-8xl text-white mb-6 leading-none">
-                  Plot List
+                  Plot
                 </h2>
                 <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#8b0000] to-transparent mx-auto mb-6" />
                 <p className="font-signature text-xl text-white/60 italic">Choose your adventure</p>
@@ -720,20 +720,20 @@ export default function Home() {
           </div>
           
           {/* Desktop Layout */}
-          <div className="hidden lg:flex items-center py-8 px-8 h-full">
-            <div className="max-w-4xl mx-auto relative w-full">
+          <div className="hidden lg:flex items-center justify-center h-full">
+            <div className="relative w-auto h-screen aspect-[4/5] max-w-[90vw]">
               {/* Page Shadow */}
               <div className="absolute inset-0 bg-black/60 blur-3xl scale-95" />
               
               {/* Single Menu Page - Desktop */}
-              <div className="relative bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5">
+              <div className="relative h-full bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5 flex flex-col">
                 
                 {/* Desktop Navigation with Back Button - Inside Menu */}
                 <motion.div 
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="flex items-center justify-center pt-8 px-12 relative z-50"
+                  className="flex items-center justify-center pt-6 px-8 relative z-50"
                 >
                   {/* Back Button */}
                   <motion.button
@@ -743,7 +743,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setShowMain(false)}
-                    className="absolute left-12 px-4 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+                    className="absolute left-8 px-4 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group flex-shrink-0"
                   >
                     <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -751,8 +751,8 @@ export default function Home() {
                   </motion.button>
                   
                   {/* Navigation - Centered */}
-                  <nav className="group relative px-6 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                    <div className="flex items-center gap-8">
+                  <nav className="group relative px-5 py-2 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <div className="flex items-center gap-6">
                       {pages.map((page) => (
                         <motion.button
                           key={page.id}
@@ -806,8 +806,9 @@ export default function Home() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="flex-1 overflow-hidden"
                   >
-                  <div className="overflow-y-auto max-h-[85vh] p-12 relative">
+                  <div className="h-full overflow-y-auto px-8 py-12 relative">
                     
                   {activeTab === 'gray-kim' && (
                     <div>
@@ -970,7 +971,7 @@ export default function Home() {
                       >
                         <p className="font-header text-[10px] tracking-[0.5em] uppercase text-white/40 mb-6">The Journey</p>
                         <h2 className="font-signature text-6xl sm:text-7xl md:text-8xl text-white mb-6 leading-none">
-                          Timeline
+                          Story
                         </h2>
                         <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#8b0000] to-transparent mx-auto mb-6" />
                         <p className="font-header text-xs tracking-[0.3em] uppercase text-white/30">1994 — Present</p>
@@ -1101,7 +1102,7 @@ export default function Home() {
                       >
                         <p className="font-header text-[10px] tracking-[0.5em] uppercase text-white/40 mb-6">Place Your Order</p>
                         <h2 className="font-signature text-6xl sm:text-7xl md:text-8xl text-white mb-6 leading-none">
-                          Plot List
+                          Plot
                         </h2>
                         <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#8b0000] to-transparent mx-auto mb-6" />
                         <p className="font-signature text-xl text-white/60 italic">Choose your adventure</p>
