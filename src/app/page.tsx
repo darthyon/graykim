@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Home as HomeIcon, BookOpen, Wine, ScrollText } from 'lucide-react';
 
 type Tab = 'gray-kim' | 'backstory' | 'that-bar' | 'plots';
 
@@ -12,11 +13,11 @@ interface Plot {
   description: string;
 }
 
-const pages: { id: Tab; label: string }[] = [
-  { id: 'gray-kim', label: 'Bio' },
-  { id: 'backstory', label: 'Story' },
-  { id: 'that-bar', label: 'That Bar' },
-  { id: 'plots', label: 'Plot' },
+const pages: { id: Tab; label: string; icon: any }[] = [
+  { id: 'gray-kim', label: 'Bio', icon: HomeIcon },
+  { id: 'backstory', label: 'Story', icon: BookOpen },
+  { id: 'that-bar', label: 'That Bar', icon: Wine },
+  { id: 'plots', label: 'Plot', icon: ScrollText },
 ];
 
 export default function Home() {
@@ -127,9 +128,9 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/80 blur-3xl scale-95" />
           
           {/* Menu Cover */}
-          <div className="relative h-full bg-gradient-to-br from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border-2 border-white/5 flex flex-col items-center justify-center p-8 lg:p-16">
+          <div className="relative h-full bg-gradient-to-br from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border-2 border-white/5 flex flex-col items-center justify-center p-8 lg:p-16 overflow-hidden">
             {/* Decorative Corner Elements */}
-            <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/10" />
+            <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/10 z-20" />
             <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/10" />
             <div className="absolute bottom-8 left-8 w-12 h-12 border-b-2 border-l-2 border-white/10" />
             <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-white/10" />
@@ -202,7 +203,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/60 blur-3xl scale-95" />
             
             {/* Single Menu Page - Mobile */}
-            <div className="relative bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5 h-full flex flex-col">
+            <div className="relative bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5 h-full flex flex-col overflow-hidden">
             
             {/* Desktop Navigation - Inside Menu */}
               <motion.div 
@@ -212,32 +213,42 @@ export default function Home() {
                 className="hidden lg:flex justify-center pt-8 relative z-50"
               >
                 <nav className="group relative px-6 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                  <div className="flex items-center gap-8">
-                    {pages.map((page) => (
-                      <motion.button
-                        key={page.id}
-                        onClick={() => {
-                          setDirection(pages.findIndex(p => p.id === page.id) > currentPageIndex ? 1 : -1);
-                          setActiveTab(page.id);
-                        }}
-                        className="relative px-4 py-1"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <span className={`font-header text-[10px] tracking-[0.3em] uppercase transition-colors duration-300 ${
-                          activeTab === page.id ? 'text-white' : 'text-white/60 hover:text-white'
-                        }`}>
-                          {page.label}
-                        </span>
-                        {activeTab === page.id && (
-                          <motion.div
-                            layoutId="activeTabDesktop"
-                            className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#8b0000]"
-                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  <div className="flex items-center gap-4">
+                    {pages.map((page) => {
+                      const Icon = page.icon;
+                      const isActive = activeTab === page.id;
+                      return (
+                        <motion.button
+                          key={page.id}
+                          onClick={() => {
+                            setDirection(pages.findIndex(p => p.id === page.id) > currentPageIndex ? 1 : -1);
+                            setActiveTab(page.id);
+                          }}
+                          className={`relative px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 ${
+                            isActive ? 'bg-[#8b0000]' : ''
+                          }`}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Icon 
+                            className={`transition-colors duration-300 ${
+                              isActive ? 'text-white' : 'text-white/60 hover:text-white'
+                            }`}
+                            size={18}
                           />
-                        )}
-                      </motion.button>
-                    ))}
+                          {isActive && (
+                            <motion.span 
+                              initial={{ opacity: 0, width: 0 }}
+                              animate={{ opacity: 1, width: 'auto' }}
+                              exit={{ opacity: 0, width: 0 }}
+                              className="font-header text-[10px] tracking-[0.3em] uppercase text-white whitespace-nowrap overflow-hidden"
+                            >
+                              {page.label}
+                            </motion.span>
+                          )}
+                        </motion.button>
+                      );
+                    })}
                   </div>
                 </nav>
               </motion.div>
@@ -264,32 +275,42 @@ export default function Home() {
                 </motion.button>
                 
                 {/* Navigation */}
-                <nav className="flex-1 px-6 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
-                  <div className="flex items-center justify-around">
-                    {pages.map((page) => (
-                      <motion.button
-                        key={page.id}
-                        onClick={() => {
-                          setDirection(pages.findIndex(p => p.id === page.id) > currentPageIndex ? 1 : -1);
-                          setActiveTab(page.id);
-                        }}
-                        className="relative"
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <span className={`font-header text-[10px] tracking-[0.3em] uppercase transition-colors duration-300 ${
-                          activeTab === page.id ? 'text-white' : 'text-white/60 hover:text-white'
-                        }`}>
-                          {page.label}
-                        </span>
-                        {activeTab === page.id && (
-                          <motion.div
-                            layoutId="activeTabMobile"
-                            className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#8b0000]"
-                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                <nav className="flex-1 px-4 py-3 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
+                  <div className="flex items-center justify-around gap-2">
+                    {pages.map((page) => {
+                      const Icon = page.icon;
+                      const isActive = activeTab === page.id;
+                      return (
+                        <motion.button
+                          key={page.id}
+                          onClick={() => {
+                            setDirection(pages.findIndex(p => p.id === page.id) > currentPageIndex ? 1 : -1);
+                            setActiveTab(page.id);
+                          }}
+                          className={`relative px-3 py-2 rounded-full flex items-center gap-1.5 transition-all duration-300 ${
+                            isActive ? 'bg-[#8b0000]' : ''
+                          }`}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <Icon 
+                            className={`transition-colors duration-300 flex-shrink-0 ${
+                              isActive ? 'text-white' : 'text-white/60'
+                            }`}
+                            size={16}
                           />
-                        )}
-                      </motion.button>
-                    ))}
+                          {isActive && (
+                            <motion.span 
+                              initial={{ opacity: 0, width: 0 }}
+                              animate={{ opacity: 1, width: 'auto' }}
+                              exit={{ opacity: 0, width: 0 }}
+                              className="font-header text-[9px] tracking-[0.2em] uppercase text-white whitespace-nowrap overflow-hidden"
+                            >
+                              {page.label}
+                            </motion.span>
+                          )}
+                        </motion.button>
+                      );
+                    })}
                   </div>
                 </nav>
               </motion.div>
@@ -726,7 +747,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-black/60 blur-3xl scale-95" />
               
               {/* Single Menu Page - Desktop */}
-              <div className="relative h-full bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5 flex flex-col">
+              <div className="relative h-full bg-gradient-to-b from-[#1a1a1a] via-[#0d0d0d] to-black rounded-sm shadow-2xl border border-white/5 flex flex-col overflow-hidden">
                 
                 {/* Desktop Navigation with Back Button - Inside Menu */}
                 <motion.div 
@@ -752,32 +773,42 @@ export default function Home() {
                   
                   {/* Navigation - Centered */}
                   <nav className="group relative px-5 py-2 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                    <div className="flex items-center gap-6">
-                      {pages.map((page) => (
-                        <motion.button
-                          key={page.id}
-                          onClick={() => {
-                            setDirection(pages.findIndex(p => p.id === page.id) > currentPageIndex ? 1 : -1);
-                            setActiveTab(page.id);
-                          }}
-                          className="relative px-4 py-1"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <span className={`font-header text-[10px] tracking-[0.3em] uppercase transition-colors duration-300 ${
-                            activeTab === page.id ? 'text-white' : 'text-white/60 hover:text-white'
-                          }`}>
-                            {page.label}
-                          </span>
-                          {activeTab === page.id && (
-                            <motion.div
-                              layoutId="activeTabDesktopInner"
-                              className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#8b0000]"
-                              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    <div className="flex items-center gap-4">
+                      {pages.map((page) => {
+                        const Icon = page.icon;
+                        const isActive = activeTab === page.id;
+                        return (
+                          <motion.button
+                            key={page.id}
+                            onClick={() => {
+                              setDirection(pages.findIndex(p => p.id === page.id) > currentPageIndex ? 1 : -1);
+                              setActiveTab(page.id);
+                            }}
+                            className={`relative px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 ${
+                              isActive ? 'bg-[#8b0000]' : ''
+                            }`}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <Icon 
+                              className={`transition-colors duration-300 ${
+                                isActive ? 'text-white' : 'text-white/60 hover:text-white'
+                              }`}
+                              size={18}
                             />
-                          )}
-                        </motion.button>
-                      ))}
+                            {isActive && (
+                              <motion.span 
+                                initial={{ opacity: 0, width: 0 }}
+                                animate={{ opacity: 1, width: 'auto' }}
+                                exit={{ opacity: 0, width: 0 }}
+                                className="font-header text-[10px] tracking-[0.3em] uppercase text-white whitespace-nowrap overflow-hidden"
+                              >
+                                {page.label}
+                              </motion.span>
+                            )}
+                          </motion.button>
+                        );
+                      })}
                     </div>
                   </nav>
                 </motion.div>
